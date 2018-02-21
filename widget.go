@@ -21,10 +21,10 @@ type Widget struct {
 
 func (widget *Widget) insertWidget(db *sql.DB) error {
     stmt, err := db.Prepare(`INSERT INTO widgets(name,
-    											 color,
-    											 price,
-    											 inventory,
-    											 melts) VALUES(?,?,?,?,?)`)
+                                                 color,
+                                                 price,
+                                                 inventory,
+                                                 melts) VALUES(?,?,?,?,?)`)
     if err != nil {
         return err
     }
@@ -46,20 +46,20 @@ func (widget *Widget) insertWidget(db *sql.DB) error {
 
 func (widget *Widget) updateWidget(db *sql.DB) error {
     stmt, err := db.Prepare(`UPDATE widgets SET name=?,
-    											color=?,
-    											price=?,
-    											inventory=?,
-    											melts=? WHERE id = ?`)
+                                                color=?,
+                                                price=?,
+                                                inventory=?,
+                                                melts=? WHERE id = ?`)
     if err != nil {
         return err
     }
 
     res, err := stmt.Exec(widget.Name,
-    					  widget.Color,
-    					  widget.Price,
-    					  widget.Inventory,
-    					  widget.Melts,
-    					  widget.Id)
+                          widget.Color,
+                          widget.Price,
+                          widget.Inventory,
+                          widget.Melts,
+                          widget.Id)
     if err != nil {
         return err
     }
