@@ -9,7 +9,7 @@ This is a microservice app demo project implemented using Golang programming lan
 
 # APIs
 
-The APIs require a token for authentication. It is hard coded on code for testing purpose. The token is "access_token_secret" and it must be passed in the header of the http request as following: "Authorization: access_token_secret" (see example below). Besides, the APIs return and expect to receive JSON-encoded data.
+The APIs require a token for authentication. It is hard coded on code for testing purpose. The token is `access_token_secret` and it must be passed in the header of the http request as following: `"Authorization: access_token_secret"` (see example below). Besides, the APIs return and expect to receive JSON-encoded data.
 
 ## Description
 
@@ -22,28 +22,58 @@ The APIs require a token for authentication. It is hard coded on code for testin
 
 # How to build and run this project
 
-1. Clone this repo on a local machine
+## Running the first time
+
+1. Clone this repo on a local machine.
 
 ```
 git clone https://github.com/emrachid/widgets-spa-server.git
 ```
 
-2. Execute the make command below to create and instanciate a database for the application
+2. Execute the Make command below to create and instanciate a database for the application. The database schema and data will be imported from `dump.sql` file upon creation. This file can be updated to include new data executing `make dump-db`. This script connect the database running and update `dump.sql` file so that the next database creation will include new data.
 
 ```
 make create-db
 ```
 
-3. The database server will take sometime to be available for establishing new connections. For checking if database is up and running, execute the following command until "healthy" is returned. If "unhealthy" is displayed, something wrong might be happened during the initialization of MySQL server and the container instance is down. You need to figure out the problem.
+3. The database server will take sometime to be available for establishing new connections. For checking if database is up and running, execute the following command until `"healthy"` is returned. If `"unhealthy"` is displayed, something wrong might be happened during the initialization of MySQL server and the container instance is down. In this case, you will need to figure out the problem. Check if there is another application using the same port `3306`.
 
 ```
 make status-db
 ```
 
-4. Execute the following command to initiate the application and connect it to the database server
+4. Execute the following command to initiate the application and connect it to the database server.
 
 ```
 make run-app
+```
+
+## Start and stop
+
+Once database is created for the first time, you can just start and stop its container for running the app again. The same procedure can be followed for the app container.
+
+1. Start database
+
+```
+make start-db
+```
+
+2. Start app
+
+```
+make start-app
+```
+
+3. Stop app
+
+```
+make stop-app
+```
+
+4. Stop database
+
+```
+make stop-db
 ```
 
 ## How to send requests to the app
@@ -159,7 +189,7 @@ make swagger-ui
 
 ### Swagger Editor
 
-Another alternative for viewing the documentation is using [Swagger Editor](https://editor.swagger.io). Access the Swagger Editor page, select File / Import File and upload your `swagger.json` file.
+Another alternative for viewing the documentation is using [Swagger Editor](https://editor.swagger.io). Access the Swagger Editor page ([click here](https://editor.swagger.io)), select File / Import File and upload your `swagger.json` file.
 
 # Contact Me
 
