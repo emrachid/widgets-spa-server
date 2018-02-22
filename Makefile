@@ -38,7 +38,7 @@ test-app:
 	docker start `docker ps -aqf "name=widgets-spa-mysql-test"`
 	docker stop `docker ps -aqf "name=widgets-spa-mysql-app"`
 	docker build -f Dockerfile.test -t widgets-spa-server-test .
-	docker run -it --rm --name widgets-spa-app --net=host widgets-spa-server-test
+	docker run -it --rm --name widgets-spa-app-test --net=host widgets-spa-server-test
 	docker stop `docker ps -aqf "name=widgets-spa-mysql-test"`
 # Run test database.
 test-db:
