@@ -14,11 +14,20 @@ stop-db:
 # Check if app database is up and running. DB takes sometime to start after the first creation.
 status-db:
 	docker inspect --format "{{json .State.Health.Status }}" widgets-spa-mysql-app
+
+# Start app container
+start-app:
+	docker start `docker ps -aqf "name=widgets-spa-app"`
+# Stop app container
+stop-app:
+	docker stop `docker ps -aqf "name=widgets-spa-app"`
+# Check if app database is up and running. DB takes sometime to start after the first creation.
 # Run Spa server. Create an app image, create a container based on this image and run it.
 run-app:
 	docker build -f Dockerfile.app -t widgets-spa-server .
-	docker run -it --rm --name widgets-spa-app --net=host widgets-spa-server
-
+	docker rm `docker ps -aqf "name=widgets-spa-app"`
+	docker run -d --name widgets-spa-app --net=host widgets-spa-server
+# Interative mode: docker run -it --rm --name widgets-spa-app --net=host widgets-spa-server
 
 ########################################################
 # The following commands are used for testing purpose
