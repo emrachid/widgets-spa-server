@@ -191,7 +191,7 @@ make swagger-ui
 
 Another alternative for viewing the documentation is using [Swagger Editor](https://editor.swagger.io). Access the Swagger Editor page ([click here](https://editor.swagger.io)), select File / Import File and upload your `swagger.json` file.
 
-## License
+# License
 
 The contents of this repository are covered under the [MIT License](LICENSE).
 
